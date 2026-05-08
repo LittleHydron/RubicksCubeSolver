@@ -87,10 +87,10 @@ while True:
         my_cube = cube.Cube(new_state_response.get("faces"), echo_move=lambda move: client.perform_move(move))
         print("Cube shuffled.")
     elif cmd.lower() == "solve":
-        from up_cross_solver import UpCrossSolver
-        from up_corners_solver import UpCornersSolver
-        from middle_layer_solver import MiddleLayerSolver
-        from oll_solver import OLLSolver
+        from solvers.up_cross_solver import UpCrossSolver
+        from solvers.up_corners_solver import UpCornersSolver
+        from solvers.middle_layer_solver import MiddleLayerSolver
+        from solvers.oll_solver import OLLSolver
         UpCrossSolver.solve(my_cube)
         UpCornersSolver.solve(my_cube)
         MiddleLayerSolver.solve(my_cube)
