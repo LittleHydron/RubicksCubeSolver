@@ -83,14 +83,34 @@ OLLSolver.solve(cube)
 
 ## Project Structure
 
-- `cube.py`: Core cube representation and manipulation logic
-- `simulator.py`: 3D visual simulator using VPython and ZMQ
-- `client.py`: Command-line interface for cube control
-- `up_cross_solver.py`: Solver for the white cross on the bottom face
-- `up_corners_solver.py`: Solver for positioning white corners
-- `middle_layer_solver.py`: Solver for the middle layer edges
-- `oll_solver.py`: Orient Last Layer solver
-- `requirements.txt`: Python dependencies
+```
+cubeSim/
+├── cube.py                            # Core cube representation and manipulation logic
+├── simulator.py                       # 3D visual simulator using VPython and ZMQ
+├── client.py                          # Command-line interface for cube control
+├── solvers/                           # Solving algorithms package
+│   ├── __init__.py
+│   ├── up_cross_solver.py             # Solver for the white cross on the bottom face
+│   ├── up_corners_solver.py           # Solver for positioning white corners
+│   ├── middle_layer_solver.py         # Solver for the middle layer edges
+│   └── oll_solver.py                  # Orient Last Layer solver
+├── README.md                          # This file
+├── requirements.txt                   # Python dependencies
+├── .gitignore                         # Git ignore rules
+└── .venv/                             # Virtual environment (optional)
+```
+
+**Core Modules:**
+- `cube.py`: Defines the `Cube` and `Face` classes for cube representation, state management, and move execution
+- `simulator.py`: Runs the 3D visualization server using VPython with ZMQ for network communication
+- `client.py`: Provides an interactive command-line interface to control the cube simulator
+
+**Solvers Package:**
+All solving algorithms are organized in the `solvers/` subpackage, implementing the CFOP (Fridrich) method:
+1. `UpCrossSolver`: Creates the white cross on the bottom layer
+2. `UpCornersSolver`: Positions and orients white corner pieces
+3. `MiddleLayerSolver`: Solves the middle layer edges
+4. `OLLSolver`: Orients the last layer pieces
 
 ## Requirements
 
