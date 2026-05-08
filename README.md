@@ -66,10 +66,10 @@ The solvers can be imported and used programmatically:
 
 ```python
 from cube import Cube
-from up_cross_solver import UpCrossSolver
-from up_corners_solver import UpCornersSolver
-from middle_layer_solver import MiddleLayerSolver
-from oll_solver import OLLSolver
+from solvers.up_cross_solver import UpCrossSolver
+from solvers.up_corners_solver import UpCornersSolver
+from solvers.middle_layer_solver import MiddleLayerSolver
+from solvers.oll_solver import OLLSolver
 
 # Create a cube instance
 cube = Cube({...})  # Initialize with face colors
