@@ -1,5 +1,11 @@
 from vpython import *
 import zmq
+import argparse
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Rubik\'s Cube Simulator')
+parser.add_argument('--port', type=int, default=5555, help='Port to bind the ZMQ socket (default: 5555)')
+args = parser.parse_args()
 
 # --- Налаштування сцени ---
 scene.title = "Rubik's Cube Simulator (VPython) - Fixed State"
@@ -10,7 +16,7 @@ scene.background = color.gray(0.1)
 # --- Налаштування ZMQ ---
 context = zmq.Context()
 socket = context.socket(zmq.REP)
-socket.bind("tcp://*:5555")
+socket.bind(f"tcp://*:{args.port}")
 
 # Кольорова схема (L/R та F/B налаштовані за твоїм запитом)
 colors = {

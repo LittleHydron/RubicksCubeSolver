@@ -1,6 +1,12 @@
 import zmq
+import argparse
 
 import cube
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Rubik\'s Cube Client')
+parser.add_argument('--port', type=int, default=5555, help='Port to connect to the simulator (default: 5555)')
+args = parser.parse_args()
 
 
 def validate_cube_state(cube: cube.Cube, faces_dict: dict[str, str]):
@@ -14,10 +20,10 @@ def validate_cube_state(cube: cube.Cube, faces_dict: dict[str, str]):
 
 
 class Client:
-    def __init__(self):
+    def __init__(self, port=5555):
         self.context = zmq.Context()
         self.socket = self.context.socket(zmq.REQ)
-        self.socket.connect("tcp://localhost:5555")
+        self.socket.connect(f"tcp://localhost:{port}")
     
     def send_json(self, data: dict):
         self.socket.send_json(data)
@@ -37,7 +43,7 @@ print("\n--- Rubik's Cube Controller ---")
 print("Commands: U, R, L, D, F, B, state, shuffle, exit")
 print("-------------------------------\n")
 
-client = Client()
+client = Client(args.port)
 
 my_cube = None
 response = client.get_state()
