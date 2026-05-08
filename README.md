@@ -84,7 +84,7 @@ OLLSolver.solve(cube)
 ## Project Structure
 
 ```
-cubeSim/
+RubicksCubeSolver/
 ├── cube.py                            # Core cube representation and manipulation logic
 ├── simulator.py                       # 3D visual simulator using VPython and ZMQ
 ├── client.py                          # Command-line interface for cube control
